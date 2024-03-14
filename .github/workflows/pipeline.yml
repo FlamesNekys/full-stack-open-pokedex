@@ -37,7 +37,7 @@ jobs:
       - name: Trigger deployment
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK }}
-        if: ${{ github.event_name == 'push' && ! contains(join(${{ toJson(github.event.commits.*.message) }}, ', '), '#skip') }}
+        if: ${{ github.event_name == 'push' && ! contains(join(github.event.commits.*.message), ', '), '#skip') }}
         run: |
           curl "$deploy_url"
   tag_release:
@@ -49,5 +49,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-        if: ${{ github.event_name == 'push' && ! contains(join(${{ toJson(github.event.commits.*.message) }}, ', '), '#skip')}}
+        if: ${{ github.event_name == 'push' && ! contains(join(github.event.commits.*.message, ', '), '#skip')}}
         uses: anothrNick/github-tag-action@1.67.0
