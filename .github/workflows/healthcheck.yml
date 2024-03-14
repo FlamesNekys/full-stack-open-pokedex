@@ -1,9 +1,8 @@
 name: Health check
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '30 1 * * *'
 
 jobs:
   health_check:
@@ -12,4 +11,4 @@ jobs:
       - name: Check the deployed service urls
         uses: jtalk/url-health-check-action@v4
         with:
-          url: https://full-stack-open-pokedex-bxxx.onrender.com/health|https://full-stack-open-pokedex-bxxx.onrender.com/pokemon/ivysaur
+          url: https://full-stack-open-pokedex-bxxx.onrender.com/health
