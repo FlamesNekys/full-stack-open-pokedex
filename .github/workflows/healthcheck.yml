@@ -9,7 +9,7 @@ jobs:
   health_check:
     runs-on: ubuntu-20.04
     steps:
-      - name: Check the deployed service health url
+      - name: Check the deployed service urls
         uses: jtalk/url-health-check-action@v4
         with:
-          url: https://full-stack-open-pokedex-bxxx.onrender.com/health
+          url: https://full-stack-open-pokedex-bxxx.onrender.com/health|https://full-stack-open-pokedex-bxxx.onrender.com/pokemon/ivysaur
